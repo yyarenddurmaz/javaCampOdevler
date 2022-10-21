@@ -1,0 +1,8 @@
+package interfaces;
+
+public class OracleCustomerDal implements ICustomerDal{
+	public void Add() {
+		System.out.println("Oracle'a eklendi.");
+	}
+
+}

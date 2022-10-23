@@ -1,0 +1,50 @@
+--Select 
+--ANSI
+
+Select ContactName Adi,CustomerName Sirketadi, City Sehir from Customers
+
+Select * from Customers where City='Berlin'
+
+Select * from Products where categoryId=1 or categoryId=3
+
+Select * from Products where categoryId=1 and Price>=10
+
+Select * from Products order by Price
+
+Select * from Products order by CategoryId,ProductName
+
+Select * from Products order by Price asc--artan
+Select * from Products order by Price desc--azalan
+
+select count(*) from Products --sayısını gösteriyor
+
+select count(*) from Products where CategoryID=2-- belirli kategorideki sayıyı gösteriyor
+
+select categoryid from products group by categoryid-- grupları gösteriyor
+
+select categoryid, count(*)from products group by categoryid -- hangi grupta kaç ürün var onu gösteriyor
+
+select categoryid, count(*)from products group by categoryid having count(*)<10 -- 10dan az olan grupları göster
+
+select categoryid, count(*)from products where Price>20 group by categoryid having count(*)<10 -- önce where çalışır spnra group, parası 20den az sayısı 10dan az olan grupları gösteriyor
+
+select products.productid,products.productname,products.price,categories.categoryid
+from products inner join categories
+on Products.categoryid=categories.categoryid
+where products.price>10
+--inner join iki tabloda eşleşenleri bir araya getirir, eşleşen yoksa bir araya gelmez
+
+select * from products p left join orderdetails od --solda olup sağda olmayanları da getir
+on p.productid=od.productid 
+inner join orders
+
+select * from customers c left join orders o -- right için de aynı olay gerçekleşir// genelde inner join ve left join kullanılırmış
+on c.customerid=o.customerid
+where o.customerid is null
+
+select * from products p inner join orderdetails od  --birkaç tane join eklemek istersek ekleyebiliriz
+on p.productid=od.productid 
+inner join orders o
+on o.orderid=od.orderid
+
+--bitti
